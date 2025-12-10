@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact – Kr8tive Johnson</title>
+  <link rel="shortcut icon" href="brand img/KJ (1).png" type="image/x-icon">
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="brand img/KJ (1).png" alt="logo" class="brand__logo">
+        <span class="brand__name">Kr8tive <strong>Johnson</strong></span>
+      </div>
+
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="projects.html" class="nav-link">Projects</a>
+        <a href="testimonials.html" class="nav-link">Testimonials</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CONTACT HERO -->
+  <section class="page-hero dark-bg reveal">
+    <div class="container">
+      <h1>Let’s Work Together</h1>
+      <p>Have a project in mind or want to collaborate? Let’s connect.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="contact-section reveal">
+    <div class="container contact-grid">
+
+      <!-- Contact Info -->
+      <div class="contact-info glass">
+        <h2>Contact Details</h2>
+        <p><strong>Email:</strong> <a href="mailto:johnsonezekiel757@gmail.com">johnsonezekiel757@gmail.com</a></p>
+        <p><strong>Phone:</strong> <a href="tel:+2349115190832">+234 911 519 0832</a></p>
+        <p><strong>X(twitter):</strong> <a href="ID:@Kr8tiveJohnson">@r8tiveJohnson</a></p>
+        <p><strong>Tiktok:</strong> <a href="ID:@kr8tivejohnson">@kr8tivejohnson</a></p>
+        <p><strong>Location:</strong> Lagos, Nigeria</p>
+
+        <div class="social-icons">
+          <a href="https://www.instagram.com/" target="_blank">📷</a>
+          <a href="https://www.behance.net/" target="_blank">🎨</a>
+          <a href="https://www.linkedin.com/" target="_blank">💼</a>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <form class="contact-form glass" action="https://formspree.io/f/myzbqvoq" method="POST">
+        <h2>Send a Message</h2>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" name="name" id="name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" name="_replyto" id="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea name="message" id="message" rows="5" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- MAP SECTION -->
+  <section class="map-section reveal">
+    <div class="container">
+      <h2>Find Me</h2>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.955172900927!2d3.379205114773269!3d6.455057295328926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103bf52c5f0d5d57%3A0x3e3f45ad145f2c53!2sLagos%2C%20Nigeria!5e0!3m2!1sen!2sng!4v1683727399229!5m2!1sen!2sng"
+        width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy">
+      </iframe>
+    </div>
+  </section>
+
+  <!-- FLOATING BUTTONS -->
+  <button class="theme-toggle">🌙</button>
+  <a href="https://wa.me/2349115190832" class="contact-float" target="_blank">💬</a>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2025 Kr8tive Johnson - All rights reserved</p>
+    </div>
+  </footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const form = document.querySelector(".contact-form");
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const action = form.getAttribute("action");
+    const method = form.getAttribute("method");
+
+    // Send form data using Fetch API
+    const response = await fetch(action, {
+      method: method,
+      body: formData,
+      headers: { "Accept": "application/json" }
+    });
+
+    if (response.ok) {
+      // Reset form
+      form.reset();
+
+      // Create success popup
+      const popup = document.createElement("div");
+      popup.className = "form-success";
+      popup.innerHTML = `
+        <div class="form-success-content">
+          <span class="checkmark">✅</span>
+          <p>Message sent successfully!</p>
+        </div>
+      `;
+      document.body.appendChild(popup);
+
+      // Animate + remove popup after 3s
+      setTimeout(() => {
+        popup.classList.add("show");
+      }, 100);
+
+      setTimeout(() => {
+        popup.classList.remove("show");
+        setTimeout(() => popup.remove(), 500);
+      }, 3000);
+    } else {
+      alert("Oops! Something went wrong. Please try again.");
+    }
+  });
+});
+</script>
+
+
+</body>
+</html>

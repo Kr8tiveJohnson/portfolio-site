@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Projects – Kr8tive Johnson</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+  <style>
+    body {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #f8fafc;
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .projects-header {
+      text-align: center;
+      padding: 100px 20px 40px;
+    }
+
+    .projects-header h1 {
+      font-size: 2.5rem;
+      color: #38bdf8;
+      margin-bottom: 10px;
+    }
+
+    .filter-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+
+    .filter-btn {
+      background: rgba(255,255,255,0.1);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      color: #fff;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: #38bdf8;
+      color: #0f172a;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.15);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .project-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: 0.8s ease-out;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+    }
+
+    .project-card img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
+
+    .project-title {
+      color: #fff;
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    .project-category {
+      color: #38bdf8;
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+
+    .project-desc {
+      font-size: 0.95rem;
+      color: #cbd5e1;
+      margin-bottom: 15px;
+    }
+
+    .reaction-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .reaction-btn {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: transform 0.2s ease;
+    }
+
+    .reaction-btn:hover {
+      transform: scale(1.3);
+    }
+
+    .reaction-count {
+      font-size: 0.9rem;
+      color: #94a3b8;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #38bdf8;
+      color: #0f172a;
+      padding: 12px 15px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      font-size: 1.3rem;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="brand img/KJ (1).png" alt="logo" class="brand__logo">
+        <span class="brand__name">Kr8tive <strong>Johnson</strong></span>
+      </div>
+
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="Services Page.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="projects.html" class="active">Projects</a>
+        <a href="testimonials.html">Testimonials</a>
+        <a href="recent.html">Recent</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="projects-header">
+      <h1>My Creative Works</h1>
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="branding">Branding</button>
+        <button class="filter-btn" data-filter="flyer">Flyers</button>
+        <button class="filter-btn" data-filter="logo">Logos</button>
+        <button class="filter-btn" data-filter="social">Social Media</button>
+        <button class="filter-btn" data-filter="uiux">UI/UX</button>
+        <button class="filter-btn" data-filter="web3">WEB3 DESIGN</button>
+      </div>
+    </section>
+
+    <section class="projects-grid">
+      <!-- Sample Projects -->
+      <div class="project-card" data-category="branding">
+        <img src="images/BRAND IDENTITY.jpg" alt="Brand Identity Project">
+        <h3 class="project-title">Brand Identity Design</h3>
+        <p class="project-category">Branding</p>
+        <p class="project-desc">A complete rebrand for a startup — transforming its presence with a powerful new logo, palette, and identity.</p>
+        <div class="reaction-bar">
+          <button class="reaction-btn">❤️</button>
+          <span class="reaction-count">60</span>
+          <button class="reaction-btn">👍</button>
+          <span class="reaction-count">88</span>
+        </div>
+      </div>
+
+      <div class="project-card" data-category="flyer">
+        <img src="images/service-flyer.jpg.jpg" alt="Flyer Design">
+        <h3 class="project-title">Event Flyer Design</h3>
+        <p class="project-category">Flyer</p>
+        <p class="project-desc">Vibrant and balanced layout for a major brand event — focusing on energy, clarity, and bold typography.</p>
+        <div class="reaction-bar">
+          <button class="reaction-btn">❤️</button>
+          <span class="reaction-count">19</span>
+          <button class="reaction-btn">👍</button>
+          <span class="reaction-count">11</span>
+        </div>
+      </div>
+
+      <div class="project-card" data-category="logo">
+        <img src="images/MFG LOGO.jpg" alt="Logo Concept">
+        <h3 class="project-title">Minimal Logo Concept</h3>
+        <p class="project-category">Logo</p>
+        <p class="project-desc">A minimalist mark that blends geometry and meaning — crafted for clarity and timelessness.</p>
+        <div class="reaction-bar">
+          <button class="reaction-btn">❤️</button>
+          <span class="reaction-count">35</span>
+          <button class="reaction-btn">👍</button>
+          <span class="reaction-count">28</span>
+        </div>
+      </div>
+
+      <div class="project-card" data-category="social">
+        <img src="images/social.jpg" alt="Social Media Campaign">
+        <h3 class="project-title">Social Media Visuals</h3>
+        <p class="project-category">Social Media</p>
+        <p class="project-desc">A clean, on-brand social campaign set — using consistency and hierarchy for maximum engagement.</p>
+        <div class="reaction-bar">
+          <button class="reaction-btn">❤️</button>
+          <span class="reaction-count">44</span>
+          <button class="reaction-btn">👍</button>
+          <span class="reaction-count">22</span>
+        </div>
+      </div>
+
+      <div class="project-card" data-category="uiux">
+        <img src="images/UI.UX.jpg" alt="UI Design">
+        <h3 class="project-title">UI Dashboard Concept</h3>
+        <p class="project-category">UI/UX</p>
+        <p class="project-desc">An interactive modern dashboard design — merging function, clarity, and bold visual rhythm.</p>
+        <div class="reaction-bar">
+          <button class="reaction-btn">❤️</button>
+          <span class="reaction-count">26</span>
+          <button class="reaction-btn">👍</button>
+          <span class="reaction-count">18</span>
+        </div>
+      </div>
+
+      <div class="project-card" data-category="web3">
+        <img src="samples work/WEB3 3.jpg" alt="Web3 Design"></p>
+        <div class="reaction-bar">
+          <button class="reaction-btn">❤️</button>
+          <span class="reaction-count">26</span>
+          <button class="reaction-btn">👍</button>
+          <span class="reaction-count">18</span>
+        </div>
+        <img src="samples work/WEB3 1.jpg" alt="Web3 Design">
+        <h3 class="project-title">Web3 Design</h3>
+        <p class="project-category">WEB3</p>
+        <p class="project-desc">An interactive modern dashboard design — merging function, clarity, and bold visual rhythm.</p>
+        <div class="reaction-bar">
+          <button class="reaction-btn">❤️</button>
+          <span class="reaction-count">26</span>
+          <button class="reaction-btn">👍</button>
+          <span class="reaction-count">18</span>
+        </div>
+      </div>
+
+      <div class="project-card" data-category="branding">
+        <img src="images/branding.jpg" alt="Brand Strategy Visual">
+        <h3 class="project-title">Strategic Brand Collateral</h3>
+        <p class="project-category">Branding</p>
+        <p class="project-desc">A high-end corporate visual refresh built around strong composition and storytelling.</p>
+        <div class="reaction-bar">
+          <button class="reaction-btn">❤️</button>
+          <span class="reaction-count">41</span>
+          <button class="reaction-btn">👍</button>
+          <span class="reaction-count">19</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <button class="back-to-top">↑</button>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2025 Kr8tive Johnson — All rights reserved</p>
+    </div>
+  </footer>
+
+  <script>
+    // Reveal on scroll
+    const cards = document.querySelectorAll('.project-card');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.2 });
+    cards.forEach(card => observer.observe(card));
+
+    // Filter system
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projects = document.querySelectorAll('.project-card');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        projects.forEach(p => {
+          p.style.display = filter === 'all' || p.dataset.category === filter ? 'block' : 'none';
+        });
+      });
+    });
+
+    // Like system
+    const reactionButtons = document.querySelectorAll('.reaction-btn');
+    reactionButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const count = btn.nextElementSibling;
+        count.textContent = parseInt(count.textContent) + 1;
+      });
+    });
+
+    // Back to top
+    const backToTop = document.querySelector('.back-to-top');
+    window.addEventListener('scroll', () => {
+      backToTop.style.display = window.scrollY > 200 ? 'block' : 'none';
+    });
+    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
+</body>
+</html>

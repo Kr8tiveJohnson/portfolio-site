@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Testimonials – Kr8tive Johnson</title>
+  <link rel="shortcut icon" href="brand img/KJ (1).png" type="image/x-icon">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Local fixes for testimonials page (ensures visibility/contrast) */
+    .testimonials {
+      padding: 80px 20px;
+      text-align: center;
+      color: #ffffff;
+      background: linear-gradient(135deg,#021022,#002d54);
+    }
+
+    .testimonials h1 { font-size: 2.4rem; margin-bottom: 8px; color:#e6f7ff; }
+    .testimonials p.subtitle { color: #cfeeff; margin-bottom: 28px; }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      justify-items: center;
+      align-items: start;
+    }
+
+    .testimonial-card {
+      width: 100%;
+      max-width: 360px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 14px;
+      padding: 22px;
+      text-align: left;
+      color: #eaf6ff;          /* ensure text visible */
+      box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+      transition: transform .35s ease, box-shadow .35s ease, opacity .6s ease;
+      opacity: 0;
+      transform: translateY(18px);
+    }
+
+    .testimonial-card.active { opacity: 1; transform: translateY(0); }
+
+    .testimonial-img {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(56,189,248,0.7);
+      display:block;
+      margin-bottom: 12px;
+    }
+
+    .testimonial-name { font-weight:700; color:#fff; margin-bottom:4px; }
+    .testimonial-role { color:#bcdff6; font-size:0.9rem; margin-bottom:12px; }
+    .testimonial-text { color:#e8f6ff; font-style:italic; line-height:1.5; margin-bottom:12px; }
+
+    .stars { color:#ffd166; margin-bottom:12px; }
+    .like-btn {
+      background: transparent;
+      border: 2px solid rgba(255,77,109,0.12);
+      color: #ff4d6d;
+      padding: 8px 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all .25s ease;
+    }
+    .like-btn.liked { background: #ff4d6d; color:#fff; border-color:transparent; transform:scale(1.05); }
+
+    /* Mobile: change grid to horizontal slider */
+    @media (max-width: 900px) {
+      .testimonial-grid {
+        display: flex;
+        gap:16px;
+        overflow-x: auto;
+        padding-bottom: 12px;
+        scroll-snap-type: x mandatory;
+      }
+      .testimonial-card { flex: 0 0 85%; scroll-snap-align: center; opacity:1; transform:none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header (reuse your site header styles) -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="brand img/KJ (1).png" alt="logo" class="brand__logo">
+        <span class="brand__name">Kr8tive <strong>Johnson</strong></span>
+      </div>
+
+      <nav class="main-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="projects.html" class="nav-link">Projects</a>
+        <a href="testimonials.html" class="nav-link active">Testimonials</a>
+        <a href="recent.html">Recent</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Testimonials -->
+  <section class="testimonials" id="testimonialsSection">
+    <div class="container">
+      <h1>What Clients Say</h1>
+      <p class="subtitle">Real words from people I’ve worked with</p>
+
+      <div class="testimonial-grid" id="testimonialGrid">
+        <!-- 6 testimonial cards -->
+        <div class="testimonial-card">
+          <img src="images/maxwell.jpg" alt="Client 1" class="testimonial-img">
+          <div class="testimonial-name">Maxwell</div>
+          <div class="testimonial-role">Web3 Enthusiast</div>
+          <div class="testimonial-text">“Johnson transformed my Web3 brand into something I never imagined possible sleek, bold, and unforgettable.”</div>
+          <div class="stars">★★★★</div>
+          <button class="like-btn">❤️ Like</button>
+        </div>
+
+        <div class="testimonial-card">
+          <img src="images/NACOS LOGO.jpg" alt="Client 2" class="testimonial-img">
+          <div class="testimonial-name">NACOS LASUED</div>
+          <div class="testimonial-role">School Department</div>
+          <div class="testimonial-text">"Johnson was incredibly easy to work with. He understood our departmental vision and brought it to life in the flyers and digital posters. Clean, on time, and professiona.”</div>
+          <div class="stars">★★★★★</div>
+          <button class="like-btn">❤️ Like</button>
+        </div>
+
+        <div class="testimonial-card">
+          <img src="images/TACSFON LOGO.png" alt="Client 3" class="testimonial-img">
+          <div class="testimonial-name">CHURCH FELLOWSHIP</div>
+          <div class="testimonial-role">School Department</div>
+          <div class="testimonial-text">“From our event banners to social media posts, he handled it all with grace. The designs didn’t just look good, they carried the message with clarity. Highly recommended.”</div>
+          <div class="stars">★★★</div>
+          <button class="like-btn">❤️ Like</button>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-name">Elegance by Enny</div>
+          <div class="testimonial-role">Fashion Brand</div>
+          <div class="testimonial-text">“He gave my brand the glow-up it needed. From logo redesign to product promo graphics, the visuals have never looked better.”</div>
+          <div class="stars">★★★★</div>
+          <button class="like-btn">❤️ Like</button>
+        </div> 
+
+        <div class="testimonial-card">
+          <img src="images/digital vicky.jpg" alt="Client 5" class="testimonial-img">
+          <div class="testimonial-name">Digital Vicky</div>
+          <div class="testimonial-role">Online Course Creator</div>
+          <div class="testimonial-text">He created graphics for my course launch and they literally boosted conversions. The design + strategy combo was 🔥</div>
+          <div class="stars">★★★★</div>
+          <button class="like-btn">❤️ Like</button>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-name">ILASHE BEACH</div>
+          <div class="testimonial-role">Event Planning Company</div>
+          <div class="testimonial-text">"Working with Johnson has been a breeze. Every event flyer and proposal deck was on point. Our clients noticed too</div>
+          <div class="stars">★★★★★</div>
+          <button class="like-btn">❤️ Like</button>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-name">Divine Concept Int'l</div>
+          <div class="testimonial-role">Computer Center</div>
+          <div class="testimonial-text">“I’ve worked with many designers, but Johnson stands out for his creativity, professionalism and always deliver on time.”</div>
+          <div class="stars">★★★★★</div>
+          <button class="like-btn">❤️ Like</button>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-name">Innocent Print</div>
+          <div class="testimonial-role">Printing Press</div>
+          <div class="testimonial-text">“He totally got my vibe and translated it into amazing cover art and promo designs. Always on time too”</div>
+          <div class="stars">★★★★★</div>
+          <button class="like-btn">❤️ Like</button>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-name">Bake Hub</div>
+          <div class="testimonial-role">Catering</div>
+          <div class="testimonial-text">"I needed branding for my new business and he nailed the logo, flyer, social templates. Everything matched perfectly and I didn’t have to over explain”</div>
+          <div class="stars">★★★★</div>
+          <button class="like-btn">❤️ Like</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- floating UI -->
+  <button class="theme-toggle">🌙</button>
+  <a href="https://wa.me/2349115190832" class="contact-float" target="_blank">💬</a>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2025 Kr8tive Johnson — All rights reserved</p>
+    </div>
+  </footer>
+
+  <script>
+    // Reveal on scroll (works immediately on load too)
+    function revealOnScroll() {
+      const cards = document.querySelectorAll('.testimonial-card');
+      const trigger = window.innerHeight - 100;
+      cards.forEach((card, i) => {
+        const top = card.getBoundingClientRect().top;
+        if (top < trigger) {
+          card.classList.add('active');
+        }
+      });
+    }
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+    // Also run after small timeout in case images change layout
+    setTimeout(revealOnScroll, 300);
+
+    // Like buttons
+    document.addEventListener('click', (e) => {
+      if (e.target.matches('.like-btn')) {
+        const btn = e.target;
+        btn.classList.toggle('liked');
+        btn.textContent = btn.classList.contains('liked') ? '💖 Liked' : '❤️ Like';
+      }
+    });
+
+    // Ensure testimonial texts are not hidden by some global rule:
+    // (This forcibly sets visible color if inline styles or other rules hide them)
+    document.querySelectorAll('.testimonial-text').forEach(el => {
+      el.style.color = getComputedStyle(el).color || '#e8f6ff';
+    });
+  </script>
+</body>
+</html>

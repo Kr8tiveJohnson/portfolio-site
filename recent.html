@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Recent Works – Kr8tive Johnson</title>
+  <link rel="shortcut icon" href="brand img/KJ (1).png" type="image/x-icon">
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* ===== PAGE BASE STYLES ===== */
+    body {
+      background: radial-gradient(circle at top, #001f3f, #000814);
+      color: #fff;
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header .brand {
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: #fff;
+      letter-spacing: 1px;
+    }
+
+    header nav a {
+      margin: 0 10px;
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    header nav a:hover {
+      color: #00b4ff;
+    }
+
+    main {
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .recent-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      background: linear-gradient(90deg, #00b4ff, #ff0040);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* ===== GALLERY GRID ===== */
+    .recent-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      justify-content: center;
+      padding: 0 1rem;
+    }
+
+    .work-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.05);
+      transition: transform 0.4s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .work-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 15px;
+      transition: transform 0.5s ease;
+    }
+
+    .work-item:hover img {
+      transform: scale(1.08);
+      filter: brightness(0.7);
+    }
+
+    .work-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 15px;
+    }
+
+    .work-item:hover .work-overlay {
+      opacity: 1;
+    }
+
+    .work-overlay h3 {
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
+    }
+
+    .reactions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.5rem;
+      font-size: 1.3rem;
+    }
+
+    .reactions span {
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .reactions span:hover {
+      transform: scale(1.3);
+    }
+
+    /* ===== LIGHTBOX ===== */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 999;
+    }
+
+    .lightbox.active {
+      display: flex;
+      animation: fadeIn 0.4s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .lightbox img {
+      max-width: 85%;
+      max-height: 80vh;
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgba(0, 180, 255, 0.4);
+    }
+
+    .lightbox h3 {
+      margin-top: 1rem;
+      font-size: 1.3rem;
+      color: #00b4ff;
+    }
+
+    .lightbox button {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 2rem;
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .lightbox button:hover {
+      color: #00b4ff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      background: rgba(255, 255, 255, 0.05);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #bbb;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="brand">Kr8tive <span style="color:#00b4ff;">Johnson</span></div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="testimonials.html">Testimonials</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1 class="recent-title">Recent Works</h1>
+
+    <div class="recent-gallery" id="recentGallery"></div>
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button id="closeLightbox">×</button>
+    <img src="" alt="Preview" id="lightboxImg">
+    <h3 id="lightboxTitle"></h3>
+  </div>
+
+  <footer>
+    <p>© 2025 Kr8tive Johnson — All Rights Reserved</p>
+  </footer>
+
+  <script>
+    const recentWorks = [
+      { title: "AMA Space meeting flyer", image: "samples work/sample 1.jpg" },
+      { title: "Flyer Design", image: "samples work/sample 6.jpg" },
+      { title: "Flyer Design", image: "samples work/sample 3.jpg" },
+      { title: "Thank you X design", image: "samples work/sample 4.jpg" },
+      { title: "Poster Design", image: "samples work/sample 5.jpg" },
+      { title: "Product Mockup", image: "samples work/SAMPLE 2.jpg" },
+      { title: "Poster Design", image: "samples work/sample 7.jpg" },
+      { title: "E-Flyer Design", image: "samples work/sample 8.jpg" },
+      { title: "Flyer Design", image: "samples work/sample 9.jpg" },
+      { title: "Flyer Design", image: "samples work/sample 10.jpg" },
+      { title: "Flyer Design", image: "samples work/sample 11.jpg" },
+      { title: "Poster design", image: "samples work/sample 12.jpg" },
+      { title: "E-Flyer Design", image: "samples work/sample 13.jpeg" },
+      { title: "E-Flyer Mockup", image: "samples work/sample 14.jpeg" },
+      { title: "Poster Design", image: "samples work/sample 15.jpg" },
+      { title: "E-Flyer Design", image: "samples work/sample 16.jpg" },
+    ];
+
+    const gallery = document.getElementById("recentGallery");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightboxImg");
+    const lightboxTitle = document.getElementById("lightboxTitle");
+    const closeBtn = document.getElementById("closeLightbox");
+
+    // Render Works
+    recentWorks.forEach((work) => {
+      const item = document.createElement("div");
+      item.classList.add("work-item");
+      item.innerHTML = `
+        <img src="${work.image}" alt="${work.title}">
+        <div class="work-overlay">
+          <h3>${work.title}</h3>
+          <div class="reactions">
+            <span class="like">❤️</span>
+            <span class="thumb">👍</span>
+          </div>
+        </div>
+      `;
+      gallery.appendChild(item);
+
+      // Open lightbox
+      item.addEventListener("click", () => {
+        lightboxImg.src = work.image;
+        lightboxTitle.textContent = work.title;
+        lightbox.classList.add("active");
+      });
+    });
+
+    // Close lightbox
+    closeBtn.addEventListener("click", () => {
+      lightbox.classList.remove("active");
+    });
+
+    // Like/Reaction Animation
+    document.addEventListener("click", (e) => {
+      if (e.target.classList.contains("like") || e.target.classList.contains("thumb")) {
+        e.stopPropagation();
+        e.target.style.transform = "scale(1.4)";
+        setTimeout(() => e.target.style.transform = "scale(1)", 200);
+      }
+    });
+  </script>
+</body>
+</html>
